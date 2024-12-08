@@ -1,1 +1,6 @@
 .idea
+.github
+checkpoints/
+results/
+logs/
+tb_logs/
