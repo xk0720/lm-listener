@@ -14,7 +14,7 @@ import sys
 sys.path.append(os.environ['DECA_PATH'])
 from decalib.deca import DECA
 from decalib.utils.config import cfg as deca_cfg
-from decalib.datasets import datasets
+# from decalib.datasets import datasets
 
 def gen_image(deca, codedict, include_im, fix_cam=True):
     #codedict['cam'] = [5.,-0.02,0.02]
