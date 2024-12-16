@@ -75,8 +75,20 @@ net = vqvae.HumanVQVAE(args, ## use args to define different parameters in diffe
 
 # TODO debug code block
 if dbg.DEBUG and dbg.DEBUG_MODEL:
-    for name, _ in net.named_parameters():
-        print(name)
+    ckpt = torch.load(args.resume_pth, map_location='cpu')
+    # 获取加载的权重参数名称
+    checkpoint_keys = list(ckpt.keys())
+    print("权重文件中的参数名称:")
+    for key in checkpoint_keys:
+        print(f"ckpt: {key}")
+
+    print("\n" + "=" * 50 + "\n")
+    # 获取当前网络的参数名称
+    model_keys = [name for name, _ in net.named_parameters()]
+    print("当前网络中的参数名称:")
+    for key in model_keys:
+        print(f"net: {key}")
+
     5/0
 
 args.extra_input_dim={}
