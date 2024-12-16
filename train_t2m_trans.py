@@ -89,6 +89,8 @@ if dbg.DEBUG and dbg.DEBUG_MODEL:
     # for key in model_keys:
     #     print(f"net: {key}")
 
+    print(net.vqvae.quantizer)
+
     # 进行比较
     print("\n" + "=" * 50 + "\n")
     print("比较结果:")
