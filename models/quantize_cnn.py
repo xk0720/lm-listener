@@ -197,7 +197,12 @@ class QuantizeReset(nn.Module):
         self.code_dim = code_dim
         self.reset_codebook()
         self.codebook = nn.Parameter(torch.randn(nb_code, code_dim))
-        
+
+        # 直接检查 codebook 的属性
+        print("codebook 的类型:", type(self.codebook))
+        print("codebook 是否需要梯度:", self.codebook.requires_grad)
+        print("codebook 的形状:", self.codebook.shape)
+
     def reset_codebook(self):
         self.init = False
         self.code_count = None
