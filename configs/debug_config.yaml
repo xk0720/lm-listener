@@ -1,0 +1,9 @@
+# 调试配置的总开关
+debug: true
+
+# 具体功能的调试开关
+debug_flags:
+  init: true    # 初始化过程的调试
+  data: true    # 数据加载的调试
+  model: true   # 模型相关的调试
+  dist: true    # 分布式训练的调试
