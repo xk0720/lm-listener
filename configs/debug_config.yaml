@@ -1,5 +1,5 @@
 # 调试配置的总开关
-debug: true
+debug: false
 
 # 具体功能的调试开关
 debug_flags:
