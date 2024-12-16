@@ -77,7 +77,7 @@ net = vqvae.HumanVQVAE(args, ## use args to define different parameters in diffe
 if dbg.DEBUG and dbg.DEBUG_MODEL:
     ckpt = torch.load(args.resume_pth, map_location='cpu')
     # 获取加载的权重参数名称
-    checkpoint_keys = list(ckpt.keys())
+    checkpoint_keys = list(ckpt['net'].keys())
     print("权重文件中的参数名称:")
     for key in checkpoint_keys:
         print(f"ckpt: {key}")
