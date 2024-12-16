@@ -78,16 +78,25 @@ if dbg.DEBUG and dbg.DEBUG_MODEL:
     ckpt = torch.load(args.resume_pth, map_location='cpu')
     # 获取加载的权重参数名称
     checkpoint_keys = list(ckpt['net'].keys())
-    print("权重文件中的参数名称:")
-    for key in checkpoint_keys:
-        print(f"ckpt: {key}")
+    # print("权重文件中的参数名称:")
+    # for key in checkpoint_keys:
+    #     print(f"ckpt: {key}")
 
     print("\n" + "=" * 50 + "\n")
     # 获取当前网络的参数名称
     model_keys = [name for name, _ in net.named_parameters()]
-    print("当前网络中的参数名称:")
-    for key in model_keys:
-        print(f"net: {key}")
+    # print("当前网络中的参数名称:")
+    # for key in model_keys:
+    #     print(f"net: {key}")
+
+    # 进行比较
+    print("\n" + "=" * 50 + "\n")
+    print("比较结果:")
+    for ckpt_key in checkpoint_keys:
+        if ckpt_key in model_keys:
+            print(f"匹配: {ckpt_key}")
+        else:
+            print(f"不匹配: {ckpt_key}")
 
     5/0
 
