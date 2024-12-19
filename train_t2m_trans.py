@@ -73,12 +73,6 @@ net = vqvae.HumanVQVAE(args, ## use args to define different parameters in diffe
                        args.depth,
                        args.dilation_growth_rate)
 
-# TODO debug code block
-if dbg.DEBUG and dbg.DEBUG_MODEL:
-    for name, _ in net.named_parameters():
-        print(name)
-    5/0
-
 args.extra_input_dim={}
 if args.gpt2 is not None:
     trans_encoder = trans.GPT2MotionTransformer(num_vq=args.nb_code, num_input_vq=(0 if args.speaker_vq_path is None else speaker_vq_args.nb_code), model_name=args.gpt2, top_p=args.top_p, extra_input_dim=args.extra_input_dim, freeze_lm=args.freeze_lm, output_layers=args.num_output_layers, not_pretrained=args.transformer_not_pretrained, gradient_checkpointing=args.gradient_checkpointing, predict_input_vq=args.speaker_vq_loss)
