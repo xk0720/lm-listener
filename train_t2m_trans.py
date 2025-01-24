@@ -276,6 +276,7 @@ while nb_iter < args.total_iter:
         print("r_indices: ", r_indices)
         print("input_index: ", input_index)
         print("a_indices: ", a_indices)
+        5/0
 
         assert args.gpt2 is not None, "gpt2 is utilized by default"
         if args.gpt2 is not None:
