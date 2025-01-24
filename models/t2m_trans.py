@@ -178,7 +178,13 @@ class GPT2MotionTransformer(nn.Module):
         self.num_vq = num_vq
         self.num_input_vq = num_vq
         self.top_p = top_p
+
+    # input_ids=a_indices, input_embeds=input_embeds, attention_mask=m_tokens_len, predict_input_vq=args.speaker_vq_loss
     def forward(self, input_ids, attention_mask, input_embeds=None, predict_input_vq=False):
+        print("self.text_vocab_size: ", self.text_vocab_size)
+        print("self.num_vq: ", self.num_vq)
+        5/0
+
         if input_embeds is not None:
             bs = input_embeds.shape[0]
             t = input_embeds.shape[1]

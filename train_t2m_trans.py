@@ -74,31 +74,31 @@ net = vqvae.HumanVQVAE(args, ## use args to define different parameters in diffe
                        args.dilation_growth_rate)
 
 # TODO debug code block
-if dbg.DEBUG and dbg.DEBUG_MODEL:
-    ckpt = torch.load(args.resume_pth, map_location='cpu')
-    # 获取加载的权重参数名称
-    checkpoint_keys = list(ckpt['net'].keys())
-    # print("权重文件中的参数名称:")
-    # for key in checkpoint_keys:
-    #     print(f"ckpt: {key}")
-
-    print("\n" + "=" * 50 + "\n")
-    # 获取当前网络的参数名称
-    model_keys = [name for name, _ in net.named_parameters()]
-    # print("当前网络中的参数名称:")
-    # for key in model_keys:
-    #     print(f"net: {key}")
-
-    # 进行比较
-    print("\n" + "=" * 50 + "\n")
-    print("比较结果:")
-    for ckpt_key in checkpoint_keys:
-        if ckpt_key in model_keys:
-            print(f"匹配: {ckpt_key}")
-        else:
-            print(f"不匹配: {ckpt_key}")
-
-    5/0
+# if dbg.DEBUG and dbg.DEBUG_MODEL:
+#     ckpt = torch.load(args.resume_pth, map_location='cpu')
+#     # 获取加载的权重参数名称
+#     checkpoint_keys = list(ckpt['net'].keys())
+#     # print("权重文件中的参数名称:")
+#     # for key in checkpoint_keys:
+#     #     print(f"ckpt: {key}")
+#
+#     print("\n" + "=" * 50 + "\n")
+#     # 获取当前网络的参数名称
+#     model_keys = [name for name, _ in net.named_parameters()]
+#     # print("当前网络中的参数名称:")
+#     # for key in model_keys:
+#     #     print(f"net: {key}")
+#
+#     # 进行比较
+#     print("\n" + "=" * 50 + "\n")
+#     print("比较结果:")
+#     for ckpt_key in checkpoint_keys:
+#         if ckpt_key in model_keys:
+#             print(f"匹配: {ckpt_key}")
+#         else:
+#             print(f"不匹配: {ckpt_key}")
+#
+#     5/0
 
 args.extra_input_dim={}
 if args.gpt2 is not None:
@@ -271,6 +271,13 @@ while nb_iter < args.total_iter:
         a_indices = mask*input_index+(1-mask)*r_indices
         base_codebook_num = text_model.text_vocab_size+args.nb_code
 
+        print("text_model.text_vocab_size: ", text_model.text_vocab_size)
+        print("args.nb_code: ", args.nb_code)
+        print("r_indices: ", r_indices)
+        print("input_index: ", input_index)
+        print("a_indices: ", a_indices)
+
+        assert args.gpt2 is not None, "gpt2 is utilized by default"
         if args.gpt2 is not None:
             if (args.include_speaker and args.speaker_vq_path is None) or (args.include_audio and args.audio_vq_path is None):
                 if args.fix_pkeep:
