@@ -271,12 +271,11 @@ while nb_iter < args.total_iter:
         a_indices = mask*input_index+(1-mask)*r_indices
         base_codebook_num = text_model.text_vocab_size+args.nb_code
 
-        print("text_model.text_vocab_size: ", text_model.text_vocab_size)
-        print("args.nb_code: ", args.nb_code)
-        print("r_indices: ", r_indices)
-        print("input_index: ", input_index)
-        print("a_indices: ", a_indices)
-        5/0
+        # print("text_model.text_vocab_size: ", text_model.text_vocab_size)
+        # print("args.nb_code: ", args.nb_code)
+        # print("r_indices: ", r_indices)
+        # print("input_index: ", input_index)
+        # print("a_indices: ", a_indices)
 
         assert args.gpt2 is not None, "gpt2 is utilized by default"
         if args.gpt2 is not None:
